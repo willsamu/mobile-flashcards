@@ -9,7 +9,7 @@ const Stack = createStackNavigator();
 
 const AuthStack = () => {
   return (
-    <Stack.Navigator initialRouteName="Quiz" screenOptions={{ gestureEnabled: false }}>
+    <Stack.Navigator initialRouteName="Home" screenOptions={{ gestureEnabled: false }}>
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Deck" component={Deck} />
       <Stack.Screen name="Quiz" component={Quiz} />
