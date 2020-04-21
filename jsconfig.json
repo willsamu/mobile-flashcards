@@ -1,19 +1,9 @@
 {
   "compilerOptions": {
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "paths": {
       "src/*": ["./src/*"]
     }
-    // "paths": {
-    // "*": ["src/*"],
-    //   "test/*": ["test/*"],
-    //   "underscore": ["lodash"]
-    // }
-  }
+  },
+  "include": ["."]
 }
-// {
-//   "compilerOptions": {
-//     "baseUrl": "src"
-//   },
-//   "include": ["src"]
-// }
