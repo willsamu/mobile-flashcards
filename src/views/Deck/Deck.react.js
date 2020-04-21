@@ -1,10 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const Deck = () => {
+const Deck = ({ route }) => {
+  const { title } = route.params;
   return (
     <View style={styles.container}>
-      <Text>I&apos;m the Deck screen</Text>
+      <Text>I&apos;m the Deck screen: {title}</Text>
     </View>
   );
 };

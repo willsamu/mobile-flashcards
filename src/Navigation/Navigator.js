@@ -11,7 +11,11 @@ const AuthStack = () => {
   return (
     <Stack.Navigator initialRouteName="Home" screenOptions={{ gestureEnabled: false }}>
       <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="Deck" component={Deck} />
+      <Stack.Screen
+        name="Deck"
+        component={Deck}
+        options={({ route }) => ({ title: route.params.title })}
+      />
       <Stack.Screen name="Quiz" component={Quiz} />
     </Stack.Navigator>
   );

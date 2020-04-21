@@ -1,5 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const styles = StyleSheet.create({
   container: {
@@ -32,8 +33,15 @@ const styles = StyleSheet.create({
 });
 
 const DeckCard = ({ name, amountCards, lastPlayed = 'today' }) => {
+  const navigation = useNavigation();
   return (
-    <TouchableOpacity style={styles.container} onPress={() => console.log('Pressed Card', name)}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => {
+        console.log('Pressed Card', name);
+        navigation.navigate('Deck', { title: name });
+      }}
+    >
       <Text style={styles.h1}>{name}</Text>
       <Text>{amountCards} Cards</Text>
       <Text style={styles.timestamp}>Last Played {lastPlayed}</Text>
