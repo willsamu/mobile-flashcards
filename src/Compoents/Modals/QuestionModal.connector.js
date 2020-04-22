@@ -1,44 +1,51 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { cancelEditModalDeck } from 'src/redux/actions';
-import { handleMainButton, handleCancelButton, getTitle } from './questionModal.helper';
+import { addQuestionItem } from './questionModal.helper';
 
 import QuestionModal from './QuestionModal.react';
 
-const QuestionModalConnector = () => {
+const QuestionModalConnector = ({ deckTitle }) => {
   const dispatch = useDispatch();
   const show = useSelector((state) => state.ui.showModalQuestion);
-  const editDeck = useSelector((state) => state.ui.editModalQuestion);
-  const items = useSelector((state) => Object.keys(state.data));
-  const editData = useSelector((state) => state.data[editDeck]);
 
-  const [input, setInput] = useState(editDeck);
-  const [error, setError] = useState('');
-  const title = getTitle(editDeck);
+  const [questionInput, setQuestionInput] = useState('');
+  const [answerInput, setAnswerInput] = useState('');
+  const [questionError, setQuestionError] = useState('');
+  const [answerError, setAnswerError] = useState('');
+  const items = useSelector((state) => state.data[deckTitle].questions);
 
-  const handleButton = () =>
-    handleMainButton(editDeck, dispatch, items, setError, input, setInput, editData);
-  const handleSecondaryButton = () => handleCancelButton(editDeck, dispatch, setError, setInput);
-  const backDropPress = () => {
+  const handleAddButton = () =>
+    addQuestionItem(
+      dispatch,
+      deckTitle,
+      questionInput,
+      setQuestionInput,
+      setQuestionError,
+      answerInput,
+      setAnswerInput,
+      setAnswerError,
+      items,
+    );
+  const hideModal = () => {
     cancelEditModalDeck(dispatch);
-    setError('');
+    setQuestionError('');
+    setAnswerError('');
+    setQuestionInput('');
+    setAnswerInput('');
   };
-
-  useEffect(() => {
-    setInput(editDeck);
-  }, [editDeck]);
 
   return (
     <QuestionModal
-      input={input}
-      setInput={setInput}
+      questionInput={questionInput}
+      setQuestionInput={setQuestionInput}
+      questionError={questionError}
+      answerInput={answerInput}
+      setAnswerInput={setAnswerInput}
+      answerError={answerError}
       show={show}
-      handleMainButton={handleMainButton}
-      error={error}
-      handleButton={handleButton}
-      handleSecondaryButton={handleSecondaryButton}
-      backDropPress={backDropPress}
-      title={title}
+      handleMainButton={handleAddButton}
+      hideModal={hideModal}
     />
   );
 };

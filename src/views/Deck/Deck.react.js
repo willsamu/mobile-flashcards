@@ -1,11 +1,11 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
 import { darkBlue } from 'src/utils';
 import DraggableFlatList from 'react-native-draggable-flatlist';
 import { Button } from 'react-native-elements';
 import { QuestionModal } from 'src/Compoents/Modals';
-import { toggleShowModalHome, toggleShowModalQuestion } from 'src/redux/actions';
+import { toggleShowModalQuestion, setQuestionOrder } from 'src/redux/actions';
 import QuestionCard from './QuestionCard.react';
 
 const styles = StyleSheet.create({
@@ -47,7 +47,7 @@ const Deck = ({ route, dispatch, items }) => {
         ListFooterComponent={() => <View style={styles.headerSeparator} />}
         ItemSeparatorComponent={() => <View style={styles.separator} />}
         keyExtractor={(item) => item.question}
-        // onDragEnd={({ data }) => dispatch(setDeckOrder(data))}
+        onDragEnd={({ data }) => dispatch(setQuestionOrder(data, title))}
       />
       <View style={styles.btnContainer}>
         <Button
@@ -64,7 +64,7 @@ const Deck = ({ route, dispatch, items }) => {
         />
       </View>
 
-      <QuestionModal />
+      <QuestionModal deckTitle={title} />
     </View>
   );
 };

@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import Modal from 'react-native-modal';
-import { View, StyleSheet, KeyboardAvoidingView, ScrollView, Text } from 'react-native';
-import { Input, Button, ButtonGroup, Divider } from 'react-native-elements';
+import { View, StyleSheet, KeyboardAvoidingView, ScrollView } from 'react-native';
+import { Input, Button, Divider } from 'react-native-elements';
 
 import { darkBlue } from 'src/utils';
-import { cancelEditModalDeck } from 'src/redux/actions';
 
 const styles = StyleSheet.create({
   content: {
@@ -48,44 +47,42 @@ const styles = StyleSheet.create({
     borderColor: darkBlue,
     borderWidth: 2,
   },
-  selectedBtn: {
-    backgroundColor: '#182C3D',
-    borderColor: '#182C3D',
-    borderWidth: 2,
-  },
-  selectedBtnText: {
-    color: '#fff',
-  },
-  textAnswer: {
-    color: '#86939e',
-    fontWeight: 'bold',
-    marginLeft: 10,
-  },
 });
 
-const AddQuestion = ({ show, dispatch, backDropPress, handleMainButton }) => {
-  const [index, setIndex] = useState(0);
-  const buttons = ['True', 'False'];
+const AddQuestion = ({
+  show,
+  hideModal,
+  handleMainButton,
+  answerInput,
+  setAnswerInput,
+  answerError,
+  questionInput,
+  setQuestionInput,
+  questionError,
+}) => {
   return (
-    <Modal isVisible={show} onBackdropPress={() => backDropPress()}>
+    <Modal isVisible={show} onBackdropPress={() => hideModal()}>
       <KeyboardAvoidingView>
-        <ScrollView>
+        <ScrollView keyboardShouldPersistTaps="always">
           <View style={styles.content}>
-            <Input multiline inputStyle={styles.inputStyle} label="Question" />
-            <Divider style={{ height: 10 }} />
-            <Input multiline inputStyle={styles.inputStyle} label="Explanation" />
-            <Divider style={{ height: 10 }} />
-            <Text style={styles.textAnswer}>Answer</Text>
-            <ButtonGroup
-              onPress={setIndex}
-              selectedIndex={index}
-              buttons={buttons}
-              containerStyle={{ height: 30 }}
-              containerBorderRadius={100}
-              selectedButtonStyle={styles.selectedBtn}
-              selectedTextStyle={styles.selectedBtnText}
-              textStyle={{ color: '#000' }}
+            <Input
+              defaultValue={questionInput}
+              onChangeText={(input) => setQuestionInput(input.trim())}
+              multiline
+              inputStyle={styles.inputStyle}
+              label="Question"
+              errorMessage={questionError}
             />
+            <Divider style={{ height: 10 }} />
+            <Input
+              defaultValue={answerInput}
+              onChangeText={(input) => setAnswerInput(input.trim())}
+              multiline
+              inputStyle={styles.inputStyle}
+              label="Explanation"
+              errorMessage={answerError}
+            />
+            <Divider style={{ height: 10 }} />
 
             <View style={styles.btnContainer}>
               <Button
@@ -93,7 +90,7 @@ const AddQuestion = ({ show, dispatch, backDropPress, handleMainButton }) => {
                 containerStyle={{ flex: 1, marginHorizontal: 5 }}
                 titleStyle={styles.closeBtnTitle}
                 title="Cancel"
-                onPress={() => cancelEditModalDeck(dispatch)}
+                onPress={() => hideModal()}
               />
               <Button
                 buttonStyle={styles.addBtn}

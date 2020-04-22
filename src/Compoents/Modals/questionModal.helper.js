@@ -1,85 +1,28 @@
-import {
-  addDeck,
-  toggleShowModalHome,
-  deleteDeckFromData,
-  updateDeck,
-  cancelEditModalHome,
-  toggleShowModalQuestion,
-} from 'src/redux/actions';
-import { Alert } from 'react-native';
+/* eslint-disable import/prefer-default-export */
+import { toggleShowModalQuestion, addQuestion } from 'src/redux/actions';
 
-const addNewQuestion = (dispatch, items, setError, value, setInput) => {
-  if (!value) {
-    setError(`Please Enter a Name!`);
-    return null;
-  }
-  if (items.includes(value)) {
-    setError(`Deck ${value} exists already!`);
-    return null;
-  }
-  setInput('');
+export const addQuestionItem = (
+  dispatch,
+  deckTitle,
+  question,
+  setQuestionInput,
+  setQuestionError,
+  answer,
+  setAnswerInput,
+  setAnswerError,
+  items,
+) => {
+  if (!question) setQuestionError(`Please Enter a Question!`);
+  if (!answer) setAnswerError(`Please Enter an Answer!`);
+  const exists = items.some((q) => q.question === question);
+  if (exists) setQuestionError(`That Question exists already in ${deckTitle}!`);
+  if (!question || !answer || exists) return null;
 
-  return addDeck(dispatch, value);
-};
-
-const handleUpdateQuestion = (dispatch, oldTitle, newTitle, setInput, setError) => {
-  if (!newTitle) {
-    setError(`New Name can't be Empty!`);
-    return null;
-  }
-  if (oldTitle === newTitle) {
-    setError('');
-    setInput('');
-    cancelEditModalHome(dispatch);
-    return null;
-  }
-  setInput('');
-  return updateDeck(dispatch, oldTitle, newTitle);
-};
-
-export const handleMainButton = (editDeck, dispatch, items, setError, value, setInput) => {
-  setError('');
-  return editDeck
-    ? handleUpdateQuestion(dispatch, editDeck, value, setInput, setError)
-    : addNewQuestion(dispatch, items, setError, value, setInput);
-};
-
-export const deleteQuestion = (dispatch, editDeck, setError, setInput) => {
-  Alert.alert(
-    `Delete Deck ${editDeck} `,
-    `Are you sure you want to delete ${editDeck}? You can't revert this action!`,
-    [
-      {
-        text: 'Cancel',
-        style: 'cancel',
-      },
-      {
-        text: 'OK',
-        onPress: () => {
-          setError('');
-          setInput('');
-          dispatch(deleteDeckFromData(editDeck));
-          dispatch(toggleShowModalHome(false));
-        },
-      },
-    ],
-    { cancelable: false },
-  );
-};
-
-const handleCancel = (dispatch, setError, setInput) => {
-  setError('');
-  setInput('');
+  setQuestionInput('');
+  setAnswerInput('');
+  setQuestionError('');
+  setAnswerError('');
   dispatch(toggleShowModalQuestion(false));
-};
 
-export const handleCancelButton = (editDeck, dispatch, setError, setInput) => {
-  return editDeck
-    ? deleteQuestion(dispatch, editDeck, setError, setInput)
-    : handleCancel(dispatch, setError, setInput);
+  return dispatch(addQuestion(deckTitle, { question, answer }));
 };
-
-export const getTitle = (edit) => ({
-  secondary: edit ? 'Delete' : 'Cancel',
-  primary: edit ? 'Save' : 'Add',
-});

@@ -7,6 +7,8 @@ import {
   DECKORDER_SET_DATA,
   MODAL_SET_SHOW_QUESTION_EDIT,
   MODAL_SET_SHOW_QUESTION,
+  DATA_ADD_QUESTION,
+  DATA_SET_QUESTION_ORDER,
 } from 'src/redux/types';
 
 export const toggleShowModalHome = (bool) => ({
@@ -47,4 +49,14 @@ export const updateDeckinData = (oldTitle, newTitle) => ({
 export const setDeckOrder = (data) => ({
   type: DECKORDER_SET_DATA,
   payload: data,
+});
+
+export const addQuestion = (title, question) => ({
+  type: DATA_ADD_QUESTION,
+  payload: { title, question },
+});
+
+export const setQuestionOrder = (data, title) => ({
+  type: DATA_SET_QUESTION_ORDER,
+  payload: { data, title },
 });

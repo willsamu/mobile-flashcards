@@ -6,6 +6,8 @@ import {
   DECKORDER_SET_DATA,
   DATA_DELETE_DECK,
   DATA_UPDATE_DECK,
+  DATA_ADD_QUESTION,
+  DATA_SET_QUESTION_ORDER,
 } from 'src/redux/types';
 
 const data = (state = { ...Data }, action) => {
@@ -24,7 +26,6 @@ const data = (state = { ...Data }, action) => {
     }
     case DATA_UPDATE_DECK: {
       const { oldTitle, newTitle } = action.payload;
-
       const newState = { ...state, [newTitle]: { ...state[oldTitle], title: newTitle } };
       delete newState[oldTitle];
       return newState;
@@ -36,23 +37,23 @@ const data = (state = { ...Data }, action) => {
       });
       return newState;
     }
-    default:
-      return state;
-  }
-};
-
-const deckOrder = (state = Object.keys(Data), action) => {
-  switch (action.type) {
-    case DECKORDER_SET_DATA: {
-      return update(state, {
-        order: {
-          $set: [action.payload],
-        },
+    case DATA_ADD_QUESTION: {
+      const { title, question } = action.payload;
+      const newState = update(state, {
+        [title]: { questions: { $unshift: [{ ...question }] } },
       });
+      return newState;
     }
+    case DATA_SET_QUESTION_ORDER: {
+      // eslint-disable-next-line no-shadow
+      const { data, title } = action.payload;
+      const newState = update(state, { [title]: { questions: { $set: data } } });
+      return newState;
+    }
+
     default:
       return state;
   }
 };
 
-export { data, deckOrder };
+export default data;
