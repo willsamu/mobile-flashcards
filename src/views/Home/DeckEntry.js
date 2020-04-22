@@ -44,7 +44,6 @@ const DeckCard = ({ title, amountCards, lastPlayed = 'today', drag }) => {
       <TouchableOpacity
         style={styles.container}
         onPress={() => {
-          console.log('Pressed Card', title);
           navigation.navigate('Deck', { title });
         }}
         onLongPress={drag}

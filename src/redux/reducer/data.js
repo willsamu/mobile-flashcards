@@ -1,16 +1,32 @@
 import Data from 'src/utils/Data';
 
 import update from 'immutability-helper';
-import { DATA_ADD_DECK, DECKORDER_SET_DATA } from 'src/redux/types';
+import {
+  DATA_ADD_DECK,
+  DECKORDER_SET_DATA,
+  DATA_DELETE_DECK,
+  DATA_UPDATE_DECK,
+} from 'src/redux/types';
 
-const data = (state = { order: Object.keys(Data).sort(), ...Data }, action) => {
+const data = (state = { ...Data }, action) => {
   switch (action.type) {
     case DATA_ADD_DECK: {
-      console.log('Adding Deck ', action.payload);
       const newState = update(state, {
         $merge: action.payload,
-        order: { $unshift: [Object.values(action.payload)[0].title] },
       });
+      return newState;
+    }
+    case DATA_DELETE_DECK: {
+      const newState = update(state, {
+        $unset: [action.payload],
+      });
+      return newState;
+    }
+    case DATA_UPDATE_DECK: {
+      const { oldTitle, newTitle } = action.payload;
+
+      const newState = { ...state, [newTitle]: { ...state[oldTitle], title: newTitle } };
+      delete newState[oldTitle];
       return newState;
     }
     case DECKORDER_SET_DATA: {
@@ -19,7 +35,6 @@ const data = (state = { order: Object.keys(Data).sort(), ...Data }, action) => {
           $set: [...action.payload],
         },
       });
-      console.log('NewState: ', newState);
       return newState;
     }
     default:

@@ -9,14 +9,16 @@ const HomeModal = () => {
   const dispatch = useDispatch();
   const show = useSelector((state) => state.ui.showModalHome);
   const editDeck = useSelector((state) => state.ui.editModalHome);
-  const items = useSelector((state) => state.data.order);
+  const items = useSelector((state) => Object.keys(state.data));
+  const editData = useSelector((state) => state.data[editDeck]);
 
   const [input, setInput] = useState(editDeck);
   const [error, setError] = useState('');
   const title = getTitle(editDeck);
 
-  const handleButton = () => handleMainButton(editDeck, dispatch, items, setError, input, setInput);
-  const handleSecondaryButton = () => handleCancelButton(editDeck, dispatch, setError);
+  const handleButton = () =>
+    handleMainButton(editDeck, dispatch, items, setError, input, setInput, editData);
+  const handleSecondaryButton = () => handleCancelButton(editDeck, dispatch, setError, setInput);
   const backDropPress = () => {
     cancelEditModal(dispatch);
     setError('');

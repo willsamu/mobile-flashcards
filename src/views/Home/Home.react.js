@@ -29,22 +29,24 @@ const styles = StyleSheet.create({
 
 const Home = () => {
   const dispatch = useDispatch();
-  const items = useSelector((state) => state.data.order);
-  const dataState = useSelector((state) => state.data);
+  const items = useSelector((state) => Object.values(state.data).sort((a, b) => a.index - b.index));
   return (
     <View style={styles.container}>
       <DraggableFlatList
         data={items || []}
-        renderItem={({ item, drag }) =>
-          dataState && dataState[item] ? (
-            <DeckCard title={item} amountCards={dataState[item].questions.length} drag={drag} />
-          ) : null
-        }
+        renderItem={({ item, drag }) => (
+          <DeckCard
+            key={item.id}
+            title={item.title}
+            amountCards={item.questions.length}
+            drag={drag}
+          />
+        )}
         ListHeaderComponent={() => <View style={styles.headerSeparator} />}
         ListFooterComponent={() => <View style={styles.headerSeparator} />}
         ItemSeparatorComponent={() => <View style={styles.separator} />}
-        keyExtractor={(item) => dataState[item].id}
-        onDragEnd={({ data }) => dispatch(setDeckOrder(data))}
+        keyExtractor={(item) => item.id}
+        // onDragEnd={({ data }) => dispatch(setDeckOrder(data))}
       />
 
       <Button

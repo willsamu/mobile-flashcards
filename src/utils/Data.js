@@ -16,6 +16,7 @@ const Data = {
       },
     ],
     id: uuid(),
+    index: 1,
   },
   JavaScript: {
     title: 'JavaScript',
@@ -27,6 +28,7 @@ const Data = {
       },
     ],
     id: uuid(),
+    index: 0,
   },
   Vue: {
     title: 'Vue',
@@ -41,6 +43,7 @@ const Data = {
       },
     ],
     id: uuid(),
+    index: 2,
   },
   Expo: {
     title: 'Expo',
@@ -62,6 +65,7 @@ const Data = {
       },
     ],
     id: uuid(),
+    index: 3,
   },
   AWS: {
     title: 'AWS',
@@ -76,6 +80,7 @@ const Data = {
       },
     ],
     id: uuid(),
+    index: 4,
   },
   Apollo: {
     title: 'Apollo',
@@ -87,6 +92,7 @@ const Data = {
       },
     ],
     id: uuid(),
+    index: 5,
   },
   Jest: {
     title: 'Jest',
@@ -108,6 +114,7 @@ const Data = {
       },
     ],
     id: uuid(),
+    index: 6,
   },
   'React Native': {
     title: 'React Native',
@@ -122,6 +129,7 @@ const Data = {
       },
     ],
     id: uuid(),
+    index: 7,
   },
   Python: {
     title: 'Python',
@@ -133,6 +141,7 @@ const Data = {
       },
     ],
     id: uuid(),
+    index: 8,
   },
 };
 

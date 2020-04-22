@@ -1,3 +1,9 @@
-export { toggleShowModalHome, setModalHomeEdit, setDeckOrder } from './actions';
+export {
+  toggleShowModalHome,
+  setModalHomeEdit,
+  deleteDeckFromData,
+  updateDeckinData,
+  setDeckOrder,
+} from './actions';
 
-export { cancelEditModal, editDeck, addDeck } from './shared';
+export { cancelEditModal, editDeck, addDeck, updateDeck } from './shared';

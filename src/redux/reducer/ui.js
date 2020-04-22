@@ -3,6 +3,7 @@ import { MODAL_SET_SHOW_HOME, MODAL_SET_SHOW_HOME_EDIT } from 'src/redux/types';
 const initialState = {
   showModalHome: false,
   editModalHome: null,
+  itemToDelete: null,
 };
 
 const ui = (state = initialState, action) => {

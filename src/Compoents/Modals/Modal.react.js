@@ -72,7 +72,7 @@ const Modal = ({
               label="Deck Name"
               maxLength={20}
               errorMessage={error}
-              onChangeText={(textInput) => setInput(textInput)}
+              onChangeText={(textInput) => setInput(textInput.trim())}
             />
             <View style={styles.btnContainer}>
               <Button
