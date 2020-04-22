@@ -35,20 +35,20 @@ const styles = StyleSheet.create({
   },
 });
 
-const DeckCard = ({ name, amountCards, lastPlayed = 'today' }) => {
+const DeckCard = ({ title, amountCards, lastPlayed = 'today' }) => {
   const navigation = useNavigation();
   return (
     <View>
-      <SettingsBtn />
+      <SettingsBtn title={title} />
 
       <TouchableOpacity
         style={styles.container}
         onPress={() => {
-          console.log('Pressed Card', name);
-          navigation.navigate('Deck', { title: name });
+          console.log('Pressed Card', title);
+          navigation.navigate('Deck', { title });
         }}
       >
-        <Text style={styles.h1}>{name}</Text>
+        <Text style={styles.h1}>{title}</Text>
         <Text>{amountCards} Cards</Text>
         <Text style={styles.timestamp}>Last Played {lastPlayed}</Text>
       </TouchableOpacity>

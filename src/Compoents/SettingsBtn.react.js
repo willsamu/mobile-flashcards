@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const SettingsBtn = () => (
+const SettingsBtn = ({ name }) => (
   <Button
     buttonStyle={styles.btnStyle}
     containerStyle={styles.btnConainer}

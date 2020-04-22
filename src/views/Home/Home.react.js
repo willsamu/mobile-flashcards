@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import { Button } from 'react-native-elements';
 
 import { darkBlue } from 'src/utils';
-import { AddDeck } from 'src/Compoents/Modals';
+import { DeckModal } from 'src/Compoents/Modals';
+import { useDispatch } from 'react-redux';
+import { toggleShowModalHome } from 'src/redux/actions';
 import DeckCard from './DeckEntry';
 import Data from '../Data';
 
@@ -25,7 +27,7 @@ const styles = StyleSheet.create({
 });
 
 const Home = () => {
-  const [show, setModablVisibility] = useState(false);
+  const dispatch = useDispatch();
   const renderData = Object.values(Data);
 
   return (
@@ -33,7 +35,7 @@ const Home = () => {
       <FlatList
         data={renderData}
         renderItem={({ item }) => (
-          <DeckCard name={item.title} amountCards={item.questions.length} />
+          <DeckCard title={item.title} amountCards={item.questions.length} />
         )}
         ListHeaderComponent={() => <View style={styles.headerSeparator} />}
         ListFooterComponent={() => <View style={styles.headerSeparator} />}
@@ -44,9 +46,9 @@ const Home = () => {
       <Button
         buttonStyle={styles.addDeckBtn}
         title="Add Deck"
-        onPress={() => setModablVisibility(true)}
+        onPress={() => dispatch(toggleShowModalHome(true))}
       />
-      <AddDeck show={show} setShow={setModablVisibility} />
+      <DeckModal />
     </View>
   );
 };

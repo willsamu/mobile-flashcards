@@ -5,6 +5,9 @@ import { View, StyleSheet, KeyboardAvoidingView, ScrollView } from 'react-native
 import { Input, Button } from 'react-native-elements';
 
 import { darkBlue, red } from 'src/utils/';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { toggleShowModalHome } from 'src/redux/actions';
 
 const styles = StyleSheet.create({
   content: {
@@ -49,9 +52,12 @@ const styles = StyleSheet.create({
   },
 });
 
-const Deck = ({ show, setShow, edit = true }) => {
+const DeckModal = () => {
+  const dispatch = useDispatch();
+  const show = useSelector((state) => state.ui.showModalHome);
+  const edit = useSelector((state) => state.ui.editModalHome);
   return (
-    <Modal isVisible={show} onBackdropPress={() => setShow(false)}>
+    <Modal isVisible={show} onBackdropPress={() => dispatch(toggleShowModalHome(false))}>
       <KeyboardAvoidingView>
         <ScrollView>
           <View style={styles.content}>
@@ -62,7 +68,7 @@ const Deck = ({ show, setShow, edit = true }) => {
                 containerStyle={{ flex: 1, marginHorizontal: 5 }}
                 titleStyle={{ color: edit ? red : darkBlue }}
                 title={edit ? 'Delete' : 'Cancel'}
-                onPress={() => setShow(false)}
+                onPress={() => dispatch(toggleShowModalHome(false))}
               />
               <Button
                 buttonStyle={styles.addBtn}
@@ -77,4 +83,4 @@ const Deck = ({ show, setShow, edit = true }) => {
   );
 };
 
-export default Deck;
+export default DeckModal;
