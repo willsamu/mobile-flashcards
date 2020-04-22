@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const DeckCard = ({ title, amountCards, lastPlayed = 'today' }) => {
+const DeckCard = ({ title, amountCards, lastPlayed = 'today', drag }) => {
   const navigation = useNavigation();
   return (
     <View>
@@ -47,6 +47,7 @@ const DeckCard = ({ title, amountCards, lastPlayed = 'today' }) => {
           console.log('Pressed Card', title);
           navigation.navigate('Deck', { title });
         }}
+        onLongPress={drag}
       >
         <Text style={styles.h1}>{title}</Text>
         <Text>{amountCards} Cards</Text>

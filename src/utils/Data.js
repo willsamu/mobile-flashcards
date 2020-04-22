@@ -78,6 +78,49 @@ const Data = {
       },
     ],
   },
+  Jest: {
+    title: 'Jest',
+    questions: [
+      {
+        question: 'What is a closure?',
+        answer:
+          'The combination of a function and the lexical environment within which that function was declared.',
+      },
+      {
+        question: 'What is a closure?',
+        answer:
+          'The combination of a function and the lexical environment within which that function was declared.',
+      },
+      {
+        question: 'What is a closure?',
+        answer:
+          'The combination of a function and the lexical environment within which that function was declared.',
+      },
+    ],
+  },
+  'React Native': {
+    title: 'React Native',
+    questions: [
+      {
+        question: 'What is React Native?',
+        answer: 'A library for managing user interfaces',
+      },
+      {
+        question: 'Where do you make Ajax requests in React Native?',
+        answer: 'The componentDidMount lifecycle event',
+      },
+    ],
+  },
+  Python: {
+    title: 'Python',
+    questions: [
+      {
+        question: 'What is a closure?',
+        answer:
+          'The combination of a function and the lexical environment within which that function was declared.',
+      },
+    ],
+  },
 };
 
 export default Data;
