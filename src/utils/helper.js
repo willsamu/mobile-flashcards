@@ -6,5 +6,6 @@ export const formatCreateDeck = (title) => ({
     questions: [],
     timestamp: new Date(Date.now),
     id: uuid(),
+    index: -1,
   },
 });

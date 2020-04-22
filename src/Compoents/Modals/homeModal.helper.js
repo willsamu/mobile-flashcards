@@ -22,7 +22,6 @@ const addNewDeck = (dispatch, items, setError, value, setInput) => {
 };
 
 const handleUpdateDeck = (dispatch, oldTitle, newTitle, setInput, setError) => {
-  console.log('data recieved: ', newTitle);
   if (!newTitle) {
     setError(`New Name can't be Empty!`);
     return null;

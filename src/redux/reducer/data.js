@@ -30,10 +30,9 @@ const data = (state = { ...Data }, action) => {
       return newState;
     }
     case DECKORDER_SET_DATA: {
-      const newState = update(state, {
-        order: {
-          $set: [...action.payload],
-        },
+      const newState = { ...state };
+      action.payload.forEach((element, index) => {
+        newState[element.title].index = index;
       });
       return newState;
     }

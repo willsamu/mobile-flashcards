@@ -46,7 +46,8 @@ const Home = () => {
         ListFooterComponent={() => <View style={styles.headerSeparator} />}
         ItemSeparatorComponent={() => <View style={styles.separator} />}
         keyExtractor={(item) => item.id}
-        // onDragEnd={({ data }) => dispatch(setDeckOrder(data))}
+        onDragEnd={({ data }) => dispatch(setDeckOrder(data))}
+        // onDragEnd={({ data }) => console.log('Data: ', data)}
       />
 
       <Button

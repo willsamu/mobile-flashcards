@@ -1,6 +1,12 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
+
 const Deck = ({ route }) => {
   const { title } = route.params;
   return (
@@ -11,9 +17,3 @@ const Deck = ({ route }) => {
 };
 
 export default Deck;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});

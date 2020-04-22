@@ -32,7 +32,7 @@ export const updateDeckinData = (oldTitle, newTitle) => ({
   payload: { oldTitle, newTitle },
 });
 
-export const setDeckOrder = (order) => ({
+export const setDeckOrder = (data) => ({
   type: DECKORDER_SET_DATA,
-  payload: order,
+  payload: data,
 });
