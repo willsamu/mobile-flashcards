@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { cancelEditModal } from 'src/redux/actions';
-import { handleMainButton, handleCancelButton, getTitle } from './homeModal.helper';
+import { cancelEditModalDeck } from 'src/redux/actions';
+import { handleMainButton, handleCancelButton, getTitle } from './questionModal.helper';
 
 import QuestionModal from './QuestionModal.react';
 
-const HomeModal = () => {
+const QuestionModalConnector = () => {
   const dispatch = useDispatch();
   const show = useSelector((state) => state.ui.showModalQuestion);
   const editDeck = useSelector((state) => state.ui.editModalQuestion);
@@ -20,7 +20,7 @@ const HomeModal = () => {
     handleMainButton(editDeck, dispatch, items, setError, input, setInput, editData);
   const handleSecondaryButton = () => handleCancelButton(editDeck, dispatch, setError, setInput);
   const backDropPress = () => {
-    cancelEditModal(dispatch);
+    cancelEditModalDeck(dispatch);
     setError('');
   };
 
@@ -43,4 +43,4 @@ const HomeModal = () => {
   );
 };
 
-export default HomeModal;
+export default QuestionModalConnector;

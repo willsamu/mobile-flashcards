@@ -5,6 +5,7 @@ import { View, StyleSheet, KeyboardAvoidingView, ScrollView, Text } from 'react-
 import { Input, Button, ButtonGroup, Divider } from 'react-native-elements';
 
 import { darkBlue } from 'src/utils';
+import { cancelEditModalDeck } from 'src/redux/actions';
 
 const styles = StyleSheet.create({
   content: {
@@ -62,11 +63,11 @@ const styles = StyleSheet.create({
   },
 });
 
-const AddQuestion = ({ show, dispatch, backDropPress }) => {
+const AddQuestion = ({ show, dispatch, backDropPress, handleMainButton }) => {
   const [index, setIndex] = useState(0);
   const buttons = ['True', 'False'];
   return (
-    <Modal isVisible={show} onBackdropPress={() => backDropPress}>
+    <Modal isVisible={show} onBackdropPress={() => backDropPress()}>
       <KeyboardAvoidingView>
         <ScrollView>
           <View style={styles.content}>
@@ -92,12 +93,13 @@ const AddQuestion = ({ show, dispatch, backDropPress }) => {
                 containerStyle={{ flex: 1, marginHorizontal: 5 }}
                 titleStyle={styles.closeBtnTitle}
                 title="Cancel"
-                onPress={() => dispatch()}
+                onPress={() => cancelEditModalDeck(dispatch)}
               />
               <Button
                 buttonStyle={styles.addBtn}
                 containerStyle={{ flex: 2, marginHorizontal: 5 }}
                 title="Add"
+                onPress={() => handleMainButton()}
               />
             </View>
           </View>

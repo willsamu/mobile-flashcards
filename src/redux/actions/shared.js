@@ -1,9 +1,20 @@
 import { formatCreateDeck } from 'src/utils/helper';
-import { toggleShowModalHome, setModalHomeEdit, addDeckToData, updateDeckinData } from './actions';
+import {
+  toggleShowModalHome,
+  setModalHomeEdit,
+  addDeckToData,
+  updateDeckinData,
+  toggleShowModalQuestion,
+  setModalQuestionEdit,
+} from './actions';
 
-export const cancelEditModal = (dispatch) => {
+export const cancelEditModalHome = (dispatch) => {
   dispatch(toggleShowModalHome(false));
   dispatch(setModalHomeEdit(null));
+};
+export const cancelEditModalDeck = (dispatch) => {
+  dispatch(toggleShowModalQuestion(false));
+  dispatch(setModalQuestionEdit(null));
 };
 /**
  * @description Set Name of Deck to edit
@@ -18,10 +29,10 @@ export const editDeck = (dispatch, title) => {
 export const addDeck = (dispatch, title) => {
   const deck = formatCreateDeck(title);
   dispatch(addDeckToData(deck));
-  cancelEditModal(dispatch);
+  cancelEditModalHome(dispatch);
 };
 
 export const updateDeck = (dispatch, oldTitle, newTitle) => {
   dispatch(updateDeckinData(oldTitle, newTitle));
-  cancelEditModal(dispatch);
+  cancelEditModalHome(dispatch);
 };

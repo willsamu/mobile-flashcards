@@ -4,10 +4,11 @@ import {
   deleteDeckFromData,
   updateDeck,
   cancelEditModalHome,
+  toggleShowModalQuestion,
 } from 'src/redux/actions';
 import { Alert } from 'react-native';
 
-const addNewDeck = (dispatch, items, setError, value, setInput) => {
+const addNewQuestion = (dispatch, items, setError, value, setInput) => {
   if (!value) {
     setError(`Please Enter a Name!`);
     return null;
@@ -21,7 +22,7 @@ const addNewDeck = (dispatch, items, setError, value, setInput) => {
   return addDeck(dispatch, value);
 };
 
-const handleUpdateDeck = (dispatch, oldTitle, newTitle, setInput, setError) => {
+const handleUpdateQuestion = (dispatch, oldTitle, newTitle, setInput, setError) => {
   if (!newTitle) {
     setError(`New Name can't be Empty!`);
     return null;
@@ -36,7 +37,14 @@ const handleUpdateDeck = (dispatch, oldTitle, newTitle, setInput, setError) => {
   return updateDeck(dispatch, oldTitle, newTitle);
 };
 
-export const deleteDeck = (dispatch, editDeck, setError, setInput) => {
+export const handleMainButton = (editDeck, dispatch, items, setError, value, setInput) => {
+  setError('');
+  return editDeck
+    ? handleUpdateQuestion(dispatch, editDeck, value, setInput, setError)
+    : addNewQuestion(dispatch, items, setError, value, setInput);
+};
+
+export const deleteQuestion = (dispatch, editDeck, setError, setInput) => {
   Alert.alert(
     `Delete Deck ${editDeck} `,
     `Are you sure you want to delete ${editDeck}? You can't revert this action!`,
@@ -62,19 +70,12 @@ export const deleteDeck = (dispatch, editDeck, setError, setInput) => {
 const handleCancel = (dispatch, setError, setInput) => {
   setError('');
   setInput('');
-  dispatch(toggleShowModalHome(false));
-};
-
-export const handleMainButton = (editDeck, dispatch, items, setError, value, setInput) => {
-  setError('');
-  return editDeck
-    ? handleUpdateDeck(dispatch, editDeck, value, setInput, setError)
-    : addNewDeck(dispatch, items, setError, value, setInput);
+  dispatch(toggleShowModalQuestion(false));
 };
 
 export const handleCancelButton = (editDeck, dispatch, setError, setInput) => {
   return editDeck
-    ? deleteDeck(dispatch, editDeck, setError, setInput)
+    ? deleteQuestion(dispatch, editDeck, setError, setInput)
     : handleCancel(dispatch, setError, setInput);
 };
 

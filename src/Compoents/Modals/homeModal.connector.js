@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { cancelEditModal } from 'src/redux/actions';
+import { cancelEditModalHome } from 'src/redux/actions';
 import { handleMainButton, handleCancelButton, getTitle } from './homeModal.helper';
 
 import NativeModal from './Modal.react';
@@ -20,7 +20,7 @@ const HomeModal = () => {
     handleMainButton(editDeck, dispatch, items, setError, input, setInput, editData);
   const handleSecondaryButton = () => handleCancelButton(editDeck, dispatch, setError, setInput);
   const backDropPress = () => {
-    cancelEditModal(dispatch);
+    cancelEditModalHome(dispatch);
     setError('');
   };
 

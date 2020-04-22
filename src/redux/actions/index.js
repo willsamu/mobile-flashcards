@@ -8,4 +8,4 @@ export {
   setDeckOrder,
 } from './actions';
 
-export { cancelEditModal, editDeck, addDeck, updateDeck } from './shared';
+export { cancelEditModalHome, cancelEditModalDeck, editDeck, addDeck, updateDeck } from './shared';
