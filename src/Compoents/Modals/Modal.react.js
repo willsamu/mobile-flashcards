@@ -1,14 +1,11 @@
 /* eslint-disable react/jsx-curly-newline */
-import React, { useState } from 'react';
+import React from 'react';
 
-import Modal from 'react-native-modal';
+import NativeModal from 'react-native-modal';
 import { View, StyleSheet, KeyboardAvoidingView, ScrollView } from 'react-native';
 import { Input, Button } from 'react-native-elements';
 
 import { darkBlue, red } from 'src/utils/';
-import { useSelector, useDispatch } from 'react-redux';
-
-import { toggleShowModalHome, cancelEditModal, addDeck } from 'src/redux/actions';
 
 const styles = StyleSheet.create({
   content: {
@@ -53,42 +50,20 @@ const styles = StyleSheet.create({
   },
 });
 
-// const handleMainButton = (editDeck, dispatch, items, setError, value) => {
-//   if (!editDeck && items.includes(value)) {
-//     setError(`Deck ${value} exists already!`);
-//     return null;
-//   }
-//   return editDeck
-//     ? console.log('GOTTA IMPLEMENT UPDATE TO @DeckModal.react.js')
-//     : addDeck(dispatch, value);
-// };
-
-const DeckModal = ({
+const Modal = ({
   input,
   setInput,
   show,
-  editDeck,
-  items,
-  dispatch,
-  handleMainButton,
   error,
-  setError,
   handleButton,
+  handleSecondaryButton,
+  backDropPress,
+  title,
 }) => {
-  // const dispatch = useDispatch();
-  // const show = useSelector((state) => state.ui.showModalHome);
-  // const editDeck = useSelector((state) => state.ui.editModalHome);
-  // const items = useSelector((state) => state.data.order);
   return (
-    <Modal
-      isVisible={show}
-      onBackdropPress={() => {
-        cancelEditModal(dispatch);
-        setError('');
-      }}
-    >
+    <NativeModal isVisible={show} onBackdropPress={() => backDropPress()}>
       <KeyboardAvoidingView>
-        <ScrollView>
+        <ScrollView keyboardShouldPersistTaps="always">
           <View style={styles.content}>
             <Input
               multiline
@@ -101,31 +76,27 @@ const DeckModal = ({
             />
             <View style={styles.btnContainer}>
               <Button
-                buttonStyle={[styles.closeBtn, { borderColor: editDeck ? red : darkBlue }]}
+                buttonStyle={[
+                  styles.closeBtn,
+                  { borderColor: title.secondary === 'Delete' ? red : darkBlue },
+                ]}
                 containerStyle={{ flex: 1, marginHorizontal: 5 }}
-                titleStyle={{ color: editDeck ? red : darkBlue }}
-                title={editDeck ? 'Delete' : 'Cancel'}
-                onPress={() =>
-                  editDeck
-                    ? console.log('GOTTA ADD DELETE FUNC @DeckModal.react.js')
-                    : dispatch(toggleShowModalHome(false))
-                }
+                titleStyle={{ color: title.secondary === 'Delete' ? red : darkBlue }}
+                title={title.secondary}
+                onPress={() => handleSecondaryButton()}
               />
               <Button
                 buttonStyle={styles.addBtn}
                 containerStyle={{ flex: 2, marginHorizontal: 5 }}
-                title={editDeck ? 'Save' : 'Add'}
-                onPress={() =>
-                  // handleMainButton(editDeck, dispatch, items, setError, 'AYAYAYAY DECK')
-                  handleButton()
-                }
+                title={title.primary}
+                onPress={() => handleButton()}
               />
             </View>
           </View>
         </ScrollView>
       </KeyboardAvoidingView>
-    </Modal>
+    </NativeModal>
   );
 };
 
-export default DeckModal;
+export default Modal;
