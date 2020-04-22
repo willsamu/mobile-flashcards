@@ -1,12 +1,12 @@
+/* eslint-disable react/jsx-curly-newline */
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-// import { FlatList } from 'react-native-gesture-handler';
 
 import DraggableFlatList from 'react-native-draggable-flatlist';
 import { Button } from 'react-native-elements';
 
 import { darkBlue } from 'src/utils';
-import { DeckModal } from 'src/Compoents/Modals';
+import { HomeModal } from 'src/Compoents/Modals';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleShowModalHome, setDeckOrder } from 'src/redux/actions';
 import DeckCard from './DeckEntry';
@@ -35,13 +35,15 @@ const Home = () => {
     <View style={styles.container}>
       <DraggableFlatList
         data={items || []}
-        renderItem={({ item, drag }) => (
-          <DeckCard title={item} amountCards={dataState[item].questions.length} drag={drag} />
-        )}
+        renderItem={({ item, drag }) =>
+          dataState && dataState[item] ? (
+            <DeckCard title={item} amountCards={dataState[item].questions.length} drag={drag} />
+          ) : null
+        }
         ListHeaderComponent={() => <View style={styles.headerSeparator} />}
         ListFooterComponent={() => <View style={styles.headerSeparator} />}
         ItemSeparatorComponent={() => <View style={styles.separator} />}
-        keyExtractor={(item) => item}
+        keyExtractor={(item) => dataState[item].id}
         onDragEnd={({ data }) => dispatch(setDeckOrder(data))}
       />
 
@@ -50,7 +52,7 @@ const Home = () => {
         title="Add Deck"
         onPress={() => dispatch(toggleShowModalHome(true))}
       />
-      <DeckModal />
+      <HomeModal />
     </View>
   );
 };

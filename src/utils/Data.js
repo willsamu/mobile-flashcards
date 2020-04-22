@@ -1,3 +1,7 @@
+// import 'react-native-get-random-values';
+// import { nanoid } from 'nanoid';
+import { uuid } from 'src/utils';
+
 const Data = {
   React: {
     title: 'React',
@@ -11,6 +15,7 @@ const Data = {
         answer: 'The componentDidMount lifecycle event',
       },
     ],
+    id: uuid(),
   },
   JavaScript: {
     title: 'JavaScript',
@@ -21,6 +26,7 @@ const Data = {
           'The combination of a function and the lexical environment within which that function was declared.',
       },
     ],
+    id: uuid(),
   },
   Vue: {
     title: 'Vue',
@@ -34,6 +40,7 @@ const Data = {
         answer: 'The componentDidMount lifecycle event',
       },
     ],
+    id: uuid(),
   },
   Expo: {
     title: 'Expo',
@@ -54,6 +61,7 @@ const Data = {
           'The combination of a function and the lexical environment within which that function was declared.',
       },
     ],
+    id: uuid(),
   },
   AWS: {
     title: 'AWS',
@@ -67,6 +75,7 @@ const Data = {
         answer: 'The componentDidMount lifecycle event',
       },
     ],
+    id: uuid(),
   },
   Apollo: {
     title: 'Apollo',
@@ -77,6 +86,7 @@ const Data = {
           'The combination of a function and the lexical environment within which that function was declared.',
       },
     ],
+    id: uuid(),
   },
   Jest: {
     title: 'Jest',
@@ -97,6 +107,7 @@ const Data = {
           'The combination of a function and the lexical environment within which that function was declared.',
       },
     ],
+    id: uuid(),
   },
   'React Native': {
     title: 'React Native',
@@ -110,6 +121,7 @@ const Data = {
         answer: 'The componentDidMount lifecycle event',
       },
     ],
+    id: uuid(),
   },
   Python: {
     title: 'Python',
@@ -120,6 +132,7 @@ const Data = {
           'The combination of a function and the lexical environment within which that function was declared.',
       },
     ],
+    id: uuid(),
   },
 };
 

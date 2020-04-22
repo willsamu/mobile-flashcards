@@ -53,23 +53,32 @@ const styles = StyleSheet.create({
   },
 });
 
-const handleMainButton = (editDeck, dispatch, items, setError, value) => {
-  if (!editDeck && items.includes(value)) {
-    setError(`Deck ${value} exists already!`);
-    return null;
-  }
-  return editDeck
-    ? console.log('GOTTA IMPLEMENT UPDATE TO @DeckModal.react.js')
-    : addDeck(dispatch, value);
-};
+// const handleMainButton = (editDeck, dispatch, items, setError, value) => {
+//   if (!editDeck && items.includes(value)) {
+//     setError(`Deck ${value} exists already!`);
+//     return null;
+//   }
+//   return editDeck
+//     ? console.log('GOTTA IMPLEMENT UPDATE TO @DeckModal.react.js')
+//     : addDeck(dispatch, value);
+// };
 
-const DeckModal = ({ title }) => {
-  const dispatch = useDispatch();
-  const show = useSelector((state) => state.ui.showModalHome);
-  const editDeck = useSelector((state) => state.ui.editModalHome);
-  const items = useSelector((state) => state.data.order);
-  if (title) console.log('SHOULD ABSOLUTELY UPDATE CHANGES TO ', title);
-  const [error, setError] = useState('Yes');
+const DeckModal = ({
+  input,
+  setInput,
+  show,
+  editDeck,
+  items,
+  dispatch,
+  handleMainButton,
+  error,
+  setError,
+  handleButton,
+}) => {
+  // const dispatch = useDispatch();
+  // const show = useSelector((state) => state.ui.showModalHome);
+  // const editDeck = useSelector((state) => state.ui.editModalHome);
+  // const items = useSelector((state) => state.data.order);
   return (
     <Modal
       isVisible={show}
@@ -84,10 +93,11 @@ const DeckModal = ({ title }) => {
             <Input
               multiline
               inputStyle={styles.inputStyle}
-              defaultValue={editDeck}
+              defaultValue={input}
               label="Deck Name"
               maxLength={20}
               errorMessage={error}
+              onChangeText={(textInput) => setInput(textInput)}
             />
             <View style={styles.btnContainer}>
               <Button
@@ -106,7 +116,8 @@ const DeckModal = ({ title }) => {
                 containerStyle={{ flex: 2, marginHorizontal: 5 }}
                 title={editDeck ? 'Save' : 'Add'}
                 onPress={() =>
-                  handleMainButton(editDeck, dispatch, items, setError, 'AYAYAYAY DECK')
+                  // handleMainButton(editDeck, dispatch, items, setError, 'AYAYAYAY DECK')
+                  handleButton()
                 }
               />
             </View>
