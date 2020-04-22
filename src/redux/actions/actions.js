@@ -5,6 +5,8 @@ import {
   DATA_DELETE_DECK,
   DATA_UPDATE_DECK,
   DECKORDER_SET_DATA,
+  MODAL_SET_SHOW_QUESTION_EDIT,
+  MODAL_SET_SHOW_QUESTION,
 } from 'src/redux/types';
 
 export const toggleShowModalHome = (bool) => ({
@@ -14,6 +16,16 @@ export const toggleShowModalHome = (bool) => ({
 
 export const setModalHomeEdit = (bool) => ({
   type: MODAL_SET_SHOW_HOME_EDIT,
+  payload: bool,
+});
+
+export const toggleShowModalQuestion = (bool) => ({
+  type: MODAL_SET_SHOW_QUESTION,
+  payload: bool,
+});
+
+export const setModalQuestionEdit = (bool) => ({
+  type: MODAL_SET_SHOW_QUESTION_EDIT,
   payload: bool,
 });
 

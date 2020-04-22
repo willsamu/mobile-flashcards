@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Modal from 'react-native-modal';
-import { View, StyleSheet, KeyboardAvoidingView, ScrollView } from 'react-native';
-import { Input, Button } from 'react-native-elements';
+import { View, StyleSheet, KeyboardAvoidingView, ScrollView, Text } from 'react-native';
+import { Input, Button, ButtonGroup, Divider } from 'react-native-elements';
 
 import { darkBlue } from 'src/utils';
 
@@ -47,23 +47,52 @@ const styles = StyleSheet.create({
     borderColor: darkBlue,
     borderWidth: 2,
   },
+  selectedBtn: {
+    backgroundColor: '#182C3D',
+    borderColor: '#182C3D',
+    borderWidth: 2,
+  },
+  selectedBtnText: {
+    color: '#fff',
+  },
+  textAnswer: {
+    color: '#86939e',
+    fontWeight: 'bold',
+    marginLeft: 10,
+  },
 });
 
-const AddQuestion = ({ show, setShow }) => {
+const AddQuestion = ({ show, dispatch, backDropPress }) => {
+  const [index, setIndex] = useState(0);
+  const buttons = ['True', 'False'];
   return (
-    <Modal isVisible={show} onBackdropPress={() => setShow(false)}>
+    <Modal isVisible={show} onBackdropPress={() => backDropPress}>
       <KeyboardAvoidingView>
         <ScrollView>
           <View style={styles.content}>
             <Input multiline inputStyle={styles.inputStyle} label="Question" />
-            <Input multiline inputStyle={styles.inputStyle} label="Answer" />
+            <Divider style={{ height: 10 }} />
+            <Input multiline inputStyle={styles.inputStyle} label="Explanation" />
+            <Divider style={{ height: 10 }} />
+            <Text style={styles.textAnswer}>Answer</Text>
+            <ButtonGroup
+              onPress={setIndex}
+              selectedIndex={index}
+              buttons={buttons}
+              containerStyle={{ height: 30 }}
+              containerBorderRadius={100}
+              selectedButtonStyle={styles.selectedBtn}
+              selectedTextStyle={styles.selectedBtnText}
+              textStyle={{ color: '#000' }}
+            />
+
             <View style={styles.btnContainer}>
               <Button
                 buttonStyle={styles.closeBtn}
                 containerStyle={{ flex: 1, marginHorizontal: 5 }}
                 titleStyle={styles.closeBtnTitle}
                 title="Cancel"
-                onPress={() => setShow(false)}
+                onPress={() => dispatch()}
               />
               <Button
                 buttonStyle={styles.addBtn}

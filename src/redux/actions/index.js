@@ -1,6 +1,8 @@
 export {
   toggleShowModalHome,
   setModalHomeEdit,
+  toggleShowModalQuestion,
+  setModalQuestionEdit,
   deleteDeckFromData,
   updateDeckinData,
   setDeckOrder,

@@ -7,7 +7,6 @@ import { Button } from 'react-native-elements';
 
 import { darkBlue } from 'src/utils';
 import { HomeModal } from 'src/Compoents/Modals';
-import { useDispatch, useSelector } from 'react-redux';
 import { toggleShowModalHome, setDeckOrder } from 'src/redux/actions';
 import DeckCard from './DeckEntry';
 
@@ -27,9 +26,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const Home = () => {
-  const dispatch = useDispatch();
-  const items = useSelector((state) => Object.values(state.data).sort((a, b) => a.index - b.index));
+const Home = ({ items, dispatch }) => {
   return (
     <View style={styles.container}>
       <DraggableFlatList
@@ -47,7 +44,6 @@ const Home = () => {
         ItemSeparatorComponent={() => <View style={styles.separator} />}
         keyExtractor={(item) => item.id}
         onDragEnd={({ data }) => dispatch(setDeckOrder(data))}
-        // onDragEnd={({ data }) => console.log('Data: ', data)}
       />
 
       <Button

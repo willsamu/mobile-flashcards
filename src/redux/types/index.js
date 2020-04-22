@@ -6,6 +6,10 @@ export const MODAL_SET_SHOW_HOME = 'MODAL_SET_SHOW_HOME';
 
 export const MODAL_SET_SHOW_HOME_EDIT = 'MODAL_SET_SHOW_HOME_EDIT';
 
+export const MODAL_SET_SHOW_QUESTION = 'MODAL_SET_SHOW_QUESTION';
+
+export const MODAL_SET_SHOW_QUESTION_EDIT = 'MODAL_SET_SHOW_QUESTION_EDIT';
+
 /* -------------------------------------------------------------------------- */
 /* //!                                DATA                                    */
 /* -------------------------------------------------------------------------- */

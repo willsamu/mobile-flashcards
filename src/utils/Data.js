@@ -7,12 +7,12 @@ const Data = {
     title: 'React',
     questions: [
       {
-        question: 'What is React?',
-        answer: 'A library for managing user interfaces',
+        question: 'Question One is actually a super long weird ass string',
+        answer: true,
       },
       {
-        question: 'Where do you make Ajax requests in React?',
-        answer: 'The componentDidMount lifecycle event',
+        question: 'Question Two',
+        answer: false,
       },
     ],
     id: uuid(),
@@ -22,9 +22,8 @@ const Data = {
     title: 'JavaScript',
     questions: [
       {
-        question: 'What is a closure?',
-        answer:
-          'The combination of a function and the lexical environment within which that function was declared.',
+        question: 'Question One',
+        answer: false,
       },
     ],
     id: uuid(),
@@ -34,12 +33,12 @@ const Data = {
     title: 'Vue',
     questions: [
       {
-        question: 'What is Vue?',
-        answer: 'A library for managing user interfaces',
+        question: 'Question One',
+        answer: false,
       },
       {
-        question: 'Where do you make Ajax requests in Vue?',
-        answer: 'The componentDidMount lifecycle event',
+        question: 'Question Two',
+        answer: false,
       },
     ],
     id: uuid(),
@@ -49,19 +48,16 @@ const Data = {
     title: 'Expo',
     questions: [
       {
-        question: 'What is a closure?',
-        answer:
-          'The combination of a function and the lexical environment within which that function was declared.',
+        question: 'Question One',
+        answer: false,
       },
       {
-        question: 'What is a closure?',
-        answer:
-          'The combination of a function and the lexical environment within which that function was declared.',
+        question: 'Question Two',
+        answer: false,
       },
       {
-        question: 'What is a closure?',
-        answer:
-          'The combination of a function and the lexical environment within which that function was declared.',
+        question: 'Question Two',
+        answer: true,
       },
     ],
     id: uuid(),
@@ -71,12 +67,12 @@ const Data = {
     title: 'AWS',
     questions: [
       {
-        question: 'What is AWS?',
-        answer: 'A library for managing user interfaces',
+        question: 'Question One',
+        answer: true,
       },
       {
-        question: 'Where do you make Ajax requests in AWS?',
-        answer: 'The componentDidMount lifecycle event',
+        question: 'Question Two',
+        answer: true,
       },
     ],
     id: uuid(),
@@ -86,9 +82,8 @@ const Data = {
     title: 'Apollo',
     questions: [
       {
-        question: 'What is a closure?',
-        answer:
-          'The combination of a function and the lexical environment within which that function was declared.',
+        question: 'Question One',
+        answer: true,
       },
     ],
     id: uuid(),
@@ -98,19 +93,16 @@ const Data = {
     title: 'Jest',
     questions: [
       {
-        question: 'What is a closure?',
-        answer:
-          'The combination of a function and the lexical environment within which that function was declared.',
+        question: 'Question One',
+        answer: true,
       },
       {
-        question: 'What is a closure?',
-        answer:
-          'The combination of a function and the lexical environment within which that function was declared.',
+        question: 'Question Two',
+        answer: true,
       },
       {
-        question: 'What is a closure?',
-        answer:
-          'The combination of a function and the lexical environment within which that function was declared.',
+        question: 'Question Three',
+        answer: true,
       },
     ],
     id: uuid(),
@@ -120,12 +112,12 @@ const Data = {
     title: 'React Native',
     questions: [
       {
-        question: 'What is React Native?',
-        answer: 'A library for managing user interfaces',
+        question: 'Question One',
+        answer: true,
       },
       {
-        question: 'Where do you make Ajax requests in React Native?',
-        answer: 'The componentDidMount lifecycle event',
+        question: 'Question Two',
+        answer: true,
       },
     ],
     id: uuid(),
@@ -135,9 +127,8 @@ const Data = {
     title: 'Python',
     questions: [
       {
-        question: 'What is a closure?',
-        answer:
-          'The combination of a function and the lexical environment within which that function was declared.',
+        question: 'Question One',
+        answer: true,
       },
     ],
     id: uuid(),

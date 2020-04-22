@@ -1,3 +1,3 @@
-import Home from './Home.react';
+import Home from './home.connector';
 
 export default Home;
