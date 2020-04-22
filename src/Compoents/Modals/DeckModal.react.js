@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-curly-newline */
-import React from 'react';
+import React, { useState } from 'react';
 
 import Modal from 'react-native-modal';
 import { View, StyleSheet, KeyboardAvoidingView, ScrollView } from 'react-native';
@@ -8,7 +8,7 @@ import { Input, Button } from 'react-native-elements';
 import { darkBlue, red } from 'src/utils/';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { toggleShowModalHome, cancelEditModal } from 'src/redux/actions';
+import { toggleShowModalHome, cancelEditModal, addDeck } from 'src/redux/actions';
 
 const styles = StyleSheet.create({
   content: {
@@ -53,13 +53,31 @@ const styles = StyleSheet.create({
   },
 });
 
+const handleMainButton = (editDeck, dispatch, items, setError, value) => {
+  if (!editDeck && items.includes(value)) {
+    setError(`Deck ${value} exists already!`);
+    return null;
+  }
+  return editDeck
+    ? console.log('GOTTA IMPLEMENT UPDATE TO @DeckModal.react.js')
+    : addDeck(dispatch, value);
+};
+
 const DeckModal = ({ title }) => {
   const dispatch = useDispatch();
   const show = useSelector((state) => state.ui.showModalHome);
   const editDeck = useSelector((state) => state.ui.editModalHome);
+  const items = useSelector((state) => state.data.order);
   if (title) console.log('SHOULD ABSOLUTELY UPDATE CHANGES TO ', title);
+  const [error, setError] = useState('Yes');
   return (
-    <Modal isVisible={show} onBackdropPress={() => cancelEditModal(dispatch)}>
+    <Modal
+      isVisible={show}
+      onBackdropPress={() => {
+        cancelEditModal(dispatch);
+        setError('');
+      }}
+    >
       <KeyboardAvoidingView>
         <ScrollView>
           <View style={styles.content}>
@@ -69,6 +87,7 @@ const DeckModal = ({ title }) => {
               defaultValue={editDeck}
               label="Deck Name"
               maxLength={20}
+              errorMessage={error}
             />
             <View style={styles.btnContainer}>
               <Button
@@ -86,6 +105,9 @@ const DeckModal = ({ title }) => {
                 buttonStyle={styles.addBtn}
                 containerStyle={{ flex: 2, marginHorizontal: 5 }}
                 title={editDeck ? 'Save' : 'Add'}
+                onPress={() =>
+                  handleMainButton(editDeck, dispatch, items, setError, 'AYAYAYAY DECK')
+                }
               />
             </View>
           </View>

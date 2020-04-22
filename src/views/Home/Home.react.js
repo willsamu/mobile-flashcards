@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, StyleSheet } from 'react-native';
 // import { FlatList } from 'react-native-gesture-handler';
 
@@ -8,7 +8,7 @@ import { Button } from 'react-native-elements';
 import { darkBlue } from 'src/utils';
 import { DeckModal } from 'src/Compoents/Modals';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleShowModalHome } from 'src/redux/actions';
+import { toggleShowModalHome, setDeckOrder } from 'src/redux/actions';
 import DeckCard from './DeckEntry';
 
 const styles = StyleSheet.create({
@@ -29,21 +29,20 @@ const styles = StyleSheet.create({
 
 const Home = () => {
   const dispatch = useDispatch();
-  const items = useSelector((state) => state.dataOrder);
-  // const data = useSelector((state) => state.data);
-  const [renderData, setRenderData] = useState(items ? Object.values(items) : []);
+  const items = useSelector((state) => state.data.order);
+  const dataState = useSelector((state) => state.data);
   return (
     <View style={styles.container}>
       <DraggableFlatList
-        data={renderData}
+        data={items || []}
         renderItem={({ item, drag }) => (
-          <DeckCard title={item.title} amountCards={item.questions.length} drag={drag} />
+          <DeckCard title={item} amountCards={dataState[item].questions.length} drag={drag} />
         )}
         ListHeaderComponent={() => <View style={styles.headerSeparator} />}
         ListFooterComponent={() => <View style={styles.headerSeparator} />}
         ItemSeparatorComponent={() => <View style={styles.separator} />}
-        keyExtractor={(item) => item.title}
-        onDragEnd={({ data }) => setRenderData(data)}
+        keyExtractor={(item) => item}
+        onDragEnd={({ data }) => dispatch(setDeckOrder(data))}
       />
 
       <Button

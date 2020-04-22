@@ -1,4 +1,5 @@
-import { toggleShowModalHome, setModalHomeEdit } from './actions';
+import { formatCreateDeck } from 'src/utils/helper';
+import { toggleShowModalHome, setModalHomeEdit, addDeckToData } from './actions';
 
 export const cancelEditModal = (dispatch) => {
   dispatch(toggleShowModalHome(false));
@@ -12,4 +13,10 @@ export const cancelEditModal = (dispatch) => {
 export const editDeck = (dispatch, title) => {
   dispatch(toggleShowModalHome(true));
   dispatch(setModalHomeEdit(title));
+};
+
+export const addDeck = (dispatch, title) => {
+  const deck = formatCreateDeck(title);
+  dispatch(addDeckToData(deck));
+  cancelEditModal(dispatch);
 };
