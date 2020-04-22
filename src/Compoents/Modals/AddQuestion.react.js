@@ -4,6 +4,8 @@ import Modal from 'react-native-modal';
 import { View, StyleSheet, KeyboardAvoidingView, ScrollView } from 'react-native';
 import { Input, Button } from 'react-native-elements';
 
+import { darkBlue } from 'src/utils';
+
 const styles = StyleSheet.create({
   content: {
     backgroundColor: 'white',
@@ -34,15 +36,15 @@ const styles = StyleSheet.create({
   },
   closeBtn: {
     backgroundColor: 'white',
-    borderColor: '#001427',
+    borderColor: darkBlue,
     borderWidth: 2,
   },
   closeBtnTitle: {
-    color: '#001427',
+    color: darkBlue,
   },
   addBtn: {
-    backgroundColor: '#001427',
-    borderColor: '#001427',
+    backgroundColor: darkBlue,
+    borderColor: darkBlue,
     borderWidth: 2,
   },
 });

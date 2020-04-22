@@ -1,19 +1,21 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { TouchableOpacity, Text, StyleSheet, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+
+import { darkBlue } from 'src/utils';
+import { SettingsBtn } from 'src/Compoents/';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     marginHorizontal: 25,
     backgroundColor: '#fff',
-    borderColor: '#000',
+    borderColor: darkBlue,
     borderWidth: 2,
     borderRadius: 5,
     paddingVertical: 10,
     paddingHorizontal: 15,
 
-    shadowColor: '#000',
+    shadowColor: darkBlue,
     shadowOffset: {
       width: 0,
       height: 6,
@@ -22,6 +24,7 @@ const styles = StyleSheet.create({
     shadowRadius: 7.49,
 
     elevation: 12,
+    zIndex: 0,
   },
   h1: {
     fontSize: 20,
@@ -35,17 +38,21 @@ const styles = StyleSheet.create({
 const DeckCard = ({ name, amountCards, lastPlayed = 'today' }) => {
   const navigation = useNavigation();
   return (
-    <TouchableOpacity
-      style={styles.container}
-      onPress={() => {
-        console.log('Pressed Card', name);
-        navigation.navigate('Deck', { title: name });
-      }}
-    >
-      <Text style={styles.h1}>{name}</Text>
-      <Text>{amountCards} Cards</Text>
-      <Text style={styles.timestamp}>Last Played {lastPlayed}</Text>
-    </TouchableOpacity>
+    <View>
+      <SettingsBtn />
+
+      <TouchableOpacity
+        style={styles.container}
+        onPress={() => {
+          console.log('Pressed Card', name);
+          navigation.navigate('Deck', { title: name });
+        }}
+      >
+        <Text style={styles.h1}>{name}</Text>
+        <Text>{amountCards} Cards</Text>
+        <Text style={styles.timestamp}>Last Played {lastPlayed}</Text>
+      </TouchableOpacity>
+    </View>
   );
 };
 

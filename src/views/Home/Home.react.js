@@ -3,7 +3,8 @@ import { View, StyleSheet } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import { Button } from 'react-native-elements';
 
-import { AddQuestion } from 'src/Compoents/Modals';
+import { darkBlue } from 'src/utils';
+import { AddDeck } from 'src/Compoents/Modals';
 import DeckCard from './DeckEntry';
 import Data from '../Data';
 
@@ -18,7 +19,7 @@ const styles = StyleSheet.create({
     height: 5,
   },
   addDeckBtn: {
-    backgroundColor: '#001427',
+    backgroundColor: darkBlue,
     borderRadius: 0,
   },
 });
@@ -45,7 +46,7 @@ const Home = () => {
         title="Add Deck"
         onPress={() => setModablVisibility(true)}
       />
-      <AddQuestion show={show} setShow={setModablVisibility} />
+      <AddDeck show={show} setShow={setModablVisibility} />
     </View>
   );
 };
