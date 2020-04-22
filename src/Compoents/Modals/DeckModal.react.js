@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-curly-newline */
 import React from 'react';
 
 import Modal from 'react-native-modal';
@@ -7,7 +8,7 @@ import { Input, Button } from 'react-native-elements';
 import { darkBlue, red } from 'src/utils/';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { toggleShowModalHome } from 'src/redux/actions';
+import { toggleShowModalHome, cancelEditModal } from 'src/redux/actions';
 
 const styles = StyleSheet.create({
   content: {
@@ -52,28 +53,39 @@ const styles = StyleSheet.create({
   },
 });
 
-const DeckModal = () => {
+const DeckModal = ({ title }) => {
   const dispatch = useDispatch();
   const show = useSelector((state) => state.ui.showModalHome);
-  const edit = useSelector((state) => state.ui.editModalHome);
+  const editDeck = useSelector((state) => state.ui.editModalHome);
+  if (title) console.log('SHOULD ABSOLUTELY UPDATE CHANGES TO ', title);
   return (
-    <Modal isVisible={show} onBackdropPress={() => dispatch(toggleShowModalHome(false))}>
+    <Modal isVisible={show} onBackdropPress={() => cancelEditModal(dispatch)}>
       <KeyboardAvoidingView>
         <ScrollView>
           <View style={styles.content}>
-            <Input multiline inputStyle={styles.inputStyle} label="Deck Name" />
+            <Input
+              multiline
+              inputStyle={styles.inputStyle}
+              defaultValue={editDeck}
+              label="Deck Name"
+              maxLength={20}
+            />
             <View style={styles.btnContainer}>
               <Button
-                buttonStyle={[styles.closeBtn, { borderColor: edit ? red : darkBlue }]}
+                buttonStyle={[styles.closeBtn, { borderColor: editDeck ? red : darkBlue }]}
                 containerStyle={{ flex: 1, marginHorizontal: 5 }}
-                titleStyle={{ color: edit ? red : darkBlue }}
-                title={edit ? 'Delete' : 'Cancel'}
-                onPress={() => dispatch(toggleShowModalHome(false))}
+                titleStyle={{ color: editDeck ? red : darkBlue }}
+                title={editDeck ? 'Delete' : 'Cancel'}
+                onPress={() =>
+                  editDeck
+                    ? console.log('GOTTA ADD DELETE FUNC @DeckModal.react.js')
+                    : dispatch(toggleShowModalHome(false))
+                }
               />
               <Button
                 buttonStyle={styles.addBtn}
                 containerStyle={{ flex: 2, marginHorizontal: 5 }}
-                title="Add"
+                title={editDeck ? 'Save' : 'Add'}
               />
             </View>
           </View>
