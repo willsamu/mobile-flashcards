@@ -35,7 +35,7 @@ const Home = ({ items, dispatch }) => {
           <DeckCard
             key={item.id}
             title={item.title}
-            amountCards={item.questions.length}
+            amountCards={(item && item.questions && item.questions.length) || 0}
             drag={drag}
           />
         )}

@@ -26,10 +26,11 @@ export const editDeck = (dispatch, title) => {
   dispatch(setModalHomeEdit(title));
 };
 
-export const addDeck = (dispatch, title) => {
+export const addDeck = (dispatch, title, navigate) => {
   const deck = formatCreateDeck(title);
   dispatch(addDeckToData(deck));
   cancelEditModalHome(dispatch);
+  navigate();
 };
 
 export const updateDeck = (dispatch, oldTitle, newTitle) => {

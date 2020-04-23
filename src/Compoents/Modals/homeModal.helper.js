@@ -7,7 +7,7 @@ import {
 } from 'src/redux/actions';
 import { Alert } from 'react-native';
 
-const addNewDeck = (dispatch, items, setError, value, setInput) => {
+const addNewDeck = (dispatch, items, setError, value, setInput, navigate) => {
   if (!value) {
     setError(`Please Enter a Name!`);
     return null;
@@ -17,8 +17,7 @@ const addNewDeck = (dispatch, items, setError, value, setInput) => {
     return null;
   }
   setInput('');
-
-  return addDeck(dispatch, value);
+  return addDeck(dispatch, value, navigate);
 };
 
 const handleUpdateDeck = (dispatch, oldTitle, newTitle, setInput, setError) => {
@@ -46,7 +45,7 @@ export const deleteDeck = (dispatch, editDeck, setError, setInput) => {
         style: 'cancel',
       },
       {
-        text: 'OK',
+        text: 'DELETE',
         onPress: () => {
           setError('');
           setInput('');
@@ -65,11 +64,19 @@ const handleCancel = (dispatch, setError, setInput) => {
   dispatch(toggleShowModalHome(false));
 };
 
-export const handleMainButton = (editDeck, dispatch, items, setError, value, setInput) => {
+export const handleMainButton = (
+  editDeck,
+  dispatch,
+  items,
+  setError,
+  value,
+  setInput,
+  navigate,
+) => {
   setError('');
   return editDeck
     ? handleUpdateDeck(dispatch, editDeck, value, setInput, setError)
-    : addNewDeck(dispatch, items, setError, value, setInput);
+    : addNewDeck(dispatch, items, setError, value, setInput, navigate);
 };
 
 export const handleCancelButton = (editDeck, dispatch, setError, setInput) => {
