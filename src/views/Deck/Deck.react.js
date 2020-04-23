@@ -5,7 +5,6 @@ import { darkBlue, greyBlue } from 'src/utils';
 import DraggableFlatList from 'react-native-draggable-flatlist';
 import { Button } from 'react-native-elements';
 import { QuestionModal } from 'src/Compoents/Modals';
-import { toggleShowModalQuestion, setQuestionOrder } from 'src/redux/actions';
 import QuestionCard from './QuestionCard.react';
 
 const styles = StyleSheet.create({
@@ -43,7 +42,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const Deck = ({ title, dispatch, items, navigate }) => {
+const Deck = ({ title, showModal, items, navigate, setOrder }) => {
   return (
     <View style={styles.container}>
       <DraggableFlatList
@@ -59,20 +58,20 @@ const Deck = ({ title, dispatch, items, navigate }) => {
         ListFooterComponent={() => <View style={styles.headerSeparator} />}
         ItemSeparatorComponent={() => <View style={styles.separator} />}
         keyExtractor={(item) => item.question}
-        onDragEnd={({ data }) => dispatch(setQuestionOrder(data, title))}
+        onDragEnd={setOrder}
       />
       <View style={styles.btnContainer}>
         <Button
           containerStyle={styles.btn}
           buttonStyle={styles.addQuestionBtn}
           title="Add Question"
-          onPress={() => dispatch(toggleShowModalQuestion(true))}
+          onPress={showModal}
         />
         <Button
           containerStyle={styles.btn}
           buttonStyle={styles.startQuizBtn}
           title="Start Quiz"
-          onPress={() => navigate()}
+          onPress={navigate}
         />
       </View>
 
