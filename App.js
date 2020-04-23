@@ -7,6 +7,7 @@ import { Store, persistor } from 'src/redux/store';
 import AppNavigator from 'src/Navigation';
 
 const App = () => {
+  console.disableYellowBox = ['componentWIllReceiveProps']; // Used by some Libraries
   return (
     <Provider store={Store}>
       <PersistGate loading={null} persistor={persistor}>

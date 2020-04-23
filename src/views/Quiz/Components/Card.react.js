@@ -21,9 +21,15 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
   },
+  back: {
+    flex: 1,
+    padding: 20,
+  },
   headline: {
-    fontSize: 25,
+    fontSize: 30,
     fontWeight: 'bold',
+    color: greyBlue,
+    paddingBottom: 20,
   },
   showAnswer: {
     fontSize: 15,
@@ -62,7 +68,8 @@ const Card = ({ data }) => {
       </View>
       {/* Back Side */}
       <View style={styles.back}>
-        <Text>The Back</Text>
+        <Text style={styles.headline}>Answer: </Text>
+        <Text>{data.answer}</Text>
       </View>
     </FlipCard>
   );

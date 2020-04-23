@@ -8,11 +8,11 @@ const Data = {
     questions: [
       {
         question: 'Question One is actually a super long weird ass string',
-        answer: true,
+        answer: 'true ayay',
       },
       {
         question: 'Question Two',
-        answer: false,
+        answer: 'sadly not true :( or whatever',
       },
     ],
     id: uuid(),
@@ -23,7 +23,7 @@ const Data = {
     questions: [
       {
         question: 'Question One',
-        answer: false,
+        answer: 'sadly not true :( or whatever',
       },
     ],
     id: uuid(),
@@ -34,11 +34,11 @@ const Data = {
     questions: [
       {
         question: 'Question One',
-        answer: false,
+        answer: 'sadly not true :( or whatever',
       },
       {
         question: 'Question Two',
-        answer: false,
+        answer: 'sadly not true :( or whatever',
       },
     ],
     id: uuid(),
@@ -49,15 +49,15 @@ const Data = {
     questions: [
       {
         question: 'Question One',
-        answer: false,
+        answer: 'sadly not true :( or whatever',
       },
       {
         question: 'Question Two',
-        answer: false,
+        answer: 'sadly not true :( or whatever',
       },
       {
         question: 'Question Three',
-        answer: true,
+        answer: 'true ayay',
       },
     ],
     id: uuid(),
@@ -68,11 +68,11 @@ const Data = {
     questions: [
       {
         question: 'Question One',
-        answer: true,
+        answer: 'true ayay',
       },
       {
         question: 'Question Two',
-        answer: true,
+        answer: 'true ayay',
       },
     ],
     id: uuid(),
@@ -83,7 +83,7 @@ const Data = {
     questions: [
       {
         question: 'Question One',
-        answer: true,
+        answer: 'true ayay',
       },
     ],
     id: uuid(),
@@ -94,15 +94,15 @@ const Data = {
     questions: [
       {
         question: 'Question One',
-        answer: true,
+        answer: 'true ayay',
       },
       {
         question: 'Question Two',
-        answer: true,
+        answer: 'true ayay',
       },
       {
         question: 'Question Three',
-        answer: true,
+        answer: 'true ayay',
       },
     ],
     id: uuid(),
@@ -113,11 +113,11 @@ const Data = {
     questions: [
       {
         question: 'Question One',
-        answer: true,
+        answer: 'true ayay',
       },
       {
         question: 'Question Two',
-        answer: true,
+        answer: 'true ayay',
       },
     ],
     id: uuid(),
@@ -128,7 +128,7 @@ const Data = {
     questions: [
       {
         question: 'Question One',
-        answer: true,
+        answer: 'true ayay',
       },
     ],
     id: uuid(),
