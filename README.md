@@ -2,7 +2,7 @@
 
 ## Preview
 
-Live Previewfor Expo iOS or Android Client App  available at: https://exp.host/@samxbln/mobile-flashcards 
+Live Previewfor Expo iOS or Android Client App available at: https://exp.host/@samxbln/mobile-flashcards
 
 ### Installation
 
@@ -32,4 +32,7 @@ OR
 - [ ] Update & delete Questions
 - [ ] Custom NavigationHeader for smoother UI
 - [ ] Add more Question Formats
+- [ ] Add folder Structure as Drawer Navigator to Decks
 - [ ] Update UI of Quiz Card & Quiz Result
+- [ ] Display failed Questions at end of quiz
+- [ ] Add Option to mark question during quiz and replay quiz only with marked Questions
