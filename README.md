@@ -25,7 +25,7 @@ OR
 - [x] Add, update & delete Decks
 - [x] Add Cards
 - [x] Notifications as reminder to study daily
-- [&nbsp;&nbsp;] Update & delete Questions
-- [&nbsp;&nbsp;] Custom NavigationHeader for smoother UI
-- [&nbsp;&nbsp;] Add more Question Formats
-- [&nbsp;&nbsp;] Update UI of Quiz Card & Quiz Result
+- [ ] Update & delete Questions
+- [ ] Custom NavigationHeader for smoother UI
+- [ ] Add more Question Formats
+- [ ] Update UI of Quiz Card & Quiz Result
