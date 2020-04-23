@@ -1,6 +1,6 @@
 ## mobile-flashcards
 
-##Installation
+### Installation
 
 ```
 git clone https://github.com/willsamu/mobile-flashcards.git
