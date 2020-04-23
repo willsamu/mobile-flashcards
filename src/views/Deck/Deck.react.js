@@ -30,12 +30,7 @@ const styles = StyleSheet.create({
   btn: {
     flex: 1,
   },
-  addQuestionBtn: {
-    backgroundColor: '#182C3D',
-    borderRadius: 0,
-    height: 50,
-  },
-  startQuizBtn: {
+  actionBtn: {
     backgroundColor: darkBlue,
     borderRadius: 0,
     height: 50,
@@ -63,13 +58,13 @@ const Deck = ({ title, showModal, items, navigate, setOrder }) => {
       <View style={styles.btnContainer}>
         <Button
           containerStyle={styles.btn}
-          buttonStyle={styles.addQuestionBtn}
+          buttonStyle={styles.actionBtn}
           title="Add Question"
           onPress={showModal}
         />
         <Button
           containerStyle={styles.btn}
-          buttonStyle={styles.startQuizBtn}
+          buttonStyle={styles.actionBtn}
           title="Start Quiz"
           onPress={navigate}
         />

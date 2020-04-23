@@ -79,7 +79,7 @@ const AddQuestion = ({
               onChangeText={(input) => setAnswerInput(input.trim())}
               multiline
               inputStyle={styles.inputStyle}
-              label="Explanation"
+              label="Answer"
               errorMessage={answerError}
             />
             <Divider style={{ height: 10 }} />

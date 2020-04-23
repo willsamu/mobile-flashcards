@@ -61,7 +61,7 @@ const Quiz = () => {
       {!isDone ? (
         <View style={styles.container}>
           <Text style={[styles.cardCounterText, { opacity: isDragging ? 0 : 1 }]}>
-            {`${cardsLeft} more Card${cardsLeft !== 1 ? 's' : ''} available`}
+            {`${cardsLeft} more Card${cardsLeft !== 1 ? 's' : ''} remaining`}
           </Text>
           <Swiper
             incrementCorrect={incrementCorrect}

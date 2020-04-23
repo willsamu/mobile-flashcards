@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
     fontSize: 50,
     backgroundColor: 'transparent',
     color: '#fff',
+    textTransform: 'uppercase',
   },
   btnContainer: {
     alignSelf: 'flex-end',
