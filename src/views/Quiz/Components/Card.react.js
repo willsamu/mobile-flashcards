@@ -54,10 +54,6 @@ const Card = ({ data }) => {
       flipVertical={false}
       flip={false}
       clickable
-      onFlipEnd={() => {
-        //   (isFlipEnd) => {
-        // console.log('isFlipEnd', isFlipEnd);
-      }}
       useNativeDriver
     >
       {/* Face Side */}

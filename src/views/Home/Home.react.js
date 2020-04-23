@@ -37,6 +37,7 @@ const Home = ({ items, dispatch }) => {
             title={item.title}
             amountCards={(item && item.questions && item.questions.length) || 0}
             drag={drag}
+            lastPlayed={item.timestamp}
           />
         )}
         ListHeaderComponent={() => <View style={styles.headerSeparator} />}

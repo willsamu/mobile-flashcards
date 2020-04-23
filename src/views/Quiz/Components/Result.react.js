@@ -3,6 +3,7 @@ import Animated, { Easing } from 'react-native-reanimated';
 import { Text, StyleSheet, View } from 'react-native';
 import { Button } from 'react-native-elements';
 import { darkBlue } from 'src/utils';
+import { useNavigation } from '@react-navigation/native';
 import { calculateResults } from '../quiz.helper';
 
 const styles = StyleSheet.create({
@@ -34,6 +35,8 @@ const styles = StyleSheet.create({
 const Result = ({ restart, n, m }) => {
   const result = calculateResults(n, m);
   const opacity = new Animated.Value(0);
+  const navigation = useNavigation();
+  const goBack = () => navigation.goBack();
   useEffect(() => {
     Animated.timing(opacity, {
       toValue: 1,
@@ -51,7 +54,12 @@ const Result = ({ restart, n, m }) => {
         buttonStyle={styles.button}
         onPress={restartQuiz}
       />
-      <Button title="Done" containerStyle={styles.btnContainer} buttonStyle={styles.button} />
+      <Button
+        title="Done"
+        containerStyle={styles.btnContainer}
+        buttonStyle={styles.button}
+        onPress={goBack}
+      />
     </View>
   );
 };

@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import { darkBlue } from 'src/utils';
 import { SettingsBtn } from 'src/Compoents/';
+import { timeToString } from 'src/utils/helper';
 
 const styles = StyleSheet.create({
   container: {
@@ -32,10 +33,11 @@ const styles = StyleSheet.create({
   },
   timestamp: {
     color: '#8B90A0',
+    fontSize: 12,
   },
 });
 
-const DeckCard = ({ title, amountCards, lastPlayed = 'today', drag }) => {
+const DeckCard = ({ title, amountCards, lastPlayed, drag }) => {
   const navigation = useNavigation();
   return (
     <View>
@@ -50,7 +52,7 @@ const DeckCard = ({ title, amountCards, lastPlayed = 'today', drag }) => {
       >
         <Text style={styles.h1}>{title}</Text>
         <Text>{amountCards} Cards</Text>
-        <Text style={styles.timestamp}>Last Played {lastPlayed}</Text>
+        <Text style={styles.timestamp}>Last Played {timeToString(lastPlayed)}</Text>
       </TouchableOpacity>
     </View>
   );
