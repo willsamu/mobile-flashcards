@@ -7,6 +7,14 @@
     "react/prop-types": 0,
     "react/jsx-one-expression-per-line": 0,
     "react/jsx-filename-extension": 0,
-    "no-use-before-define": 1
+    "no-use-before-define": 1,
+    "react/jsx-wrap-multilines": 0
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["."]
+      }
+    }
   }
 }
