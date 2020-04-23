@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 
-import { darkBlue } from 'src/utils';
+import { darkBlue, greyBlue } from 'src/utils';
 import DraggableFlatList from 'react-native-draggable-flatlist';
 import { Button } from 'react-native-elements';
 import { QuestionModal } from 'src/Compoents/Modals';
@@ -13,13 +13,20 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   headerSeparator: {
-    height: 20,
+    height: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   separator: {
     height: 5,
   },
   btnContainer: {
     flexDirection: 'row',
+  },
+  amountCards: {
+    fontSize: 15,
+    color: greyBlue,
+    textTransform: 'uppercase',
   },
   btn: {
     flex: 1,
@@ -43,7 +50,11 @@ const Deck = ({ route, dispatch, items }) => {
       <DraggableFlatList
         data={items || []}
         renderItem={({ item, drag }) => <QuestionCard question={item} drag={drag} />}
-        ListHeaderComponent={() => <View style={styles.headerSeparator} />}
+        ListHeaderComponent={() => (
+          <View style={styles.headerSeparator}>
+            <Text style={styles.amountCards}>{items.length} Cards available</Text>
+          </View>
+        )}
         ListFooterComponent={() => <View style={styles.headerSeparator} />}
         ItemSeparatorComponent={() => <View style={styles.separator} />}
         keyExtractor={(item) => item.question}
