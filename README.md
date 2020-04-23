@@ -1,5 +1,9 @@
 ## mobile-flashcards
 
+## Preview
+
+Live Previewfor Expo iOS or Android Client App  available at: https://exp.host/@samxbln/mobile-flashcards 
+
 ### Installation
 
 ```
