@@ -43,8 +43,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const Deck = ({ route, dispatch, items }) => {
-  const { title } = route.params;
+const Deck = ({ title, dispatch, items, navigate }) => {
   return (
     <View style={styles.container}>
       <DraggableFlatList
@@ -71,7 +70,7 @@ const Deck = ({ route, dispatch, items }) => {
           containerStyle={styles.btn}
           buttonStyle={styles.startQuizBtn}
           title="Start Quiz"
-          // onPress={() => dispatch(toggleShowModalHome(true))}
+          onPress={() => navigate()}
         />
       </View>
 
