@@ -3,7 +3,7 @@ import { StyleSheet, View, Text } from 'react-native';
 import { darkBlue, greyBlue } from 'src/utils';
 import { useSelector, useDispatch } from 'react-redux';
 import { useRoute } from '@react-navigation/native';
-import { setDeckLastPlayed } from 'src/redux/actions/actions';
+import { setTimeStamp } from 'src/redux/actions';
 import { Swiper, Result } from './Components';
 
 const styles = StyleSheet.create({
@@ -47,7 +47,7 @@ const Quiz = () => {
   const incrementCorrect = () => setAmountCorrect((oldValue) => oldValue + 1);
   const handleSwipedAll = () => {
     setIsDone(true);
-    dispatch(setDeckLastPlayed(title, new Date(Date.now())));
+    setTimeStamp(dispatch, title);
   };
   const restart = () => {
     setIsDone(false);

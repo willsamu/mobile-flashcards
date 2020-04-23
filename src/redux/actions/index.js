@@ -10,4 +10,11 @@ export {
   setQuestionOrder,
 } from './actions';
 
-export { cancelEditModalHome, cancelEditModalDeck, editDeck, addDeck, updateDeck } from './shared';
+export {
+  cancelEditModalHome,
+  cancelEditModalDeck,
+  editDeck,
+  addDeck,
+  updateDeck,
+  setTimeStamp,
+} from './shared';

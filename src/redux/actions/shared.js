@@ -1,4 +1,5 @@
 import { formatCreateDeck } from 'src/utils/helper';
+import { clearLocalNotification, setLocalNotification } from 'src/utils/Notifications';
 import {
   toggleShowModalHome,
   setModalHomeEdit,
@@ -6,6 +7,7 @@ import {
   updateDeckinData,
   toggleShowModalQuestion,
   setModalQuestionEdit,
+  setDeckLastPlayed,
 } from './actions';
 
 export const cancelEditModalHome = (dispatch) => {
@@ -36,4 +38,10 @@ export const addDeck = (dispatch, title, navigate) => {
 export const updateDeck = (dispatch, oldTitle, newTitle) => {
   dispatch(updateDeckinData(oldTitle, newTitle));
   cancelEditModalHome(dispatch);
+};
+
+export const setTimeStamp = (dispatch, title) => {
+  clearLocalNotification();
+  setLocalNotification();
+  dispatch(setDeckLastPlayed(title, new Date(Date.now())));
 };
