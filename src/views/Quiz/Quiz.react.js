@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-// import Swiper from 'react-native-deck-swiper';
 import { StyleSheet, View, Text } from 'react-native';
 import { darkBlue, greyBlue } from 'src/utils';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useRoute } from '@react-navigation/native';
+import { setDeckLastPlayed } from 'src/redux/actions/actions';
 import { Swiper, Result } from './Components';
 
 const styles = StyleSheet.create({
@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
 
 const Quiz = () => {
   const route = useRoute();
+  const dispatch = useDispatch();
   const { title } = route.params;
   const questions = title ? useSelector((state) => state.data[title].questions) : []; // TODO: FIX TITLE
   const [isDone, setIsDone] = useState(false);
@@ -44,7 +45,10 @@ const Quiz = () => {
 
   const handleCardSwipe = () => setCurrentCard((oldValue) => oldValue + 1);
   const incrementCorrect = () => setAmountCorrect((oldValue) => oldValue + 1);
-  const handleSwipedAll = () => setIsDone(true);
+  const handleSwipedAll = () => {
+    setIsDone(true);
+    dispatch(setDeckLastPlayed(title, new Date(Date.now())));
+  };
   const restart = () => {
     setIsDone(false);
     setAmountCorrect(0);

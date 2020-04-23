@@ -9,6 +9,7 @@ import {
   MODAL_SET_SHOW_QUESTION,
   DATA_ADD_QUESTION,
   DATA_SET_QUESTION_ORDER,
+  DECK_SET_LAST_PLAYED,
 } from 'src/redux/types';
 
 export const toggleShowModalHome = (bool) => ({
@@ -59,4 +60,9 @@ export const addQuestion = (title, question) => ({
 export const setQuestionOrder = (data, title) => ({
   type: DATA_SET_QUESTION_ORDER,
   payload: { data, title },
+});
+
+export const setDeckLastPlayed = (title, timestamp) => ({
+  type: DECK_SET_LAST_PLAYED,
+  payload: { title, timestamp },
 });

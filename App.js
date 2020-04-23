@@ -7,6 +7,7 @@ import { Store, persistor } from 'src/redux/store';
 import AppNavigator from 'src/Navigation';
 
 const App = () => {
+  // eslint-disable-next-line no-console
   console.disableYellowBox = ['componentWIllReceiveProps']; // Used by some Libraries
   return (
     <Provider store={Store}>

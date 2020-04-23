@@ -8,6 +8,7 @@ import {
   DATA_UPDATE_DECK,
   DATA_ADD_QUESTION,
   DATA_SET_QUESTION_ORDER,
+  DECK_SET_LAST_PLAYED,
 } from 'src/redux/types';
 
 const data = (state = { ...Data }, action) => {
@@ -50,7 +51,13 @@ const data = (state = { ...Data }, action) => {
       const newState = update(state, { [title]: { questions: { $set: data } } });
       return newState;
     }
-
+    case DECK_SET_LAST_PLAYED: {
+      const { title, timestamp } = action.payload;
+      const newState = update(state, {
+        [title]: { timestamp: { $set: timestamp } },
+      });
+      return newState;
+    }
     default:
       return state;
   }

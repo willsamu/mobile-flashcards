@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Animated, { Easing } from 'react-native-reanimated';
-import { Text, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Button } from 'react-native-elements';
 import { darkBlue } from 'src/utils';
 import { useNavigation } from '@react-navigation/native';

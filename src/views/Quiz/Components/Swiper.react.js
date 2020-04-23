@@ -115,7 +115,7 @@ const Swiper = ({
         title="Incorrect"
         containerStyle={[styles.btnContainer, { left: 0 }]}
         buttonStyle={styles.button}
-        onPress={() => swipeLeft}
+        onPress={swipeLeft}
       />
       <Button
         title="Correct"
