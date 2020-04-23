@@ -51,7 +51,9 @@ const Deck = ({ title, dispatch, items, navigate }) => {
         renderItem={({ item, drag }) => <QuestionCard question={item} drag={drag} />}
         ListHeaderComponent={() => (
           <View style={styles.headerSeparator}>
-            <Text style={styles.amountCards}>{items.length} Cards available</Text>
+            <Text style={styles.amountCards}>
+              {`${items.length} Card${items.length !== 1 ? 's' : ''} available`}{' '}
+            </Text>
           </View>
         )}
         ListFooterComponent={() => <View style={styles.headerSeparator} />}
